@@ -1587,15 +1587,30 @@ ul {
   .contact-form textarea.form-control {
     height: 110px;
     padding: 15px; }
-    
-  #fb-root>div.fb_dialog.fb_dialog_advanced.fb_shrink_active {
-    right: initial !important;
-    left: 18pt;
-    z-index: 9999999 !important;
-  }
+.shoutBoxHeader {
+	background-color:#222;
+	box-shadow: 2px 2px 3px 0px #000;
+	border-radius:2px;
+	border:1px solid #666;
+}
 
-  .fb-customerchat.fb_invisible_flow.fb_iframe_widget iframe {
-    right: initial !important;
-    left: 18pt !important;
-  }
+.shoutBoxContainer {
+	background-image: url(https://www.shoutbox.com/chat/bg/black.jpg);
+}
+.shoutText {
+	border: 1px solid #696969;
+}
+
+
+::-webkit-scrollbar-track
+{
+  background: rgba(150, 150, 150, 0.1);
+  border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(150, 150, 150, 0.3);
+  border-radius:20px;
+}
 /*# sourceMappingURL=style.css.map */
