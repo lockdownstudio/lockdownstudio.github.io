@@ -36,9 +36,8 @@
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
-  <link href="https://vjs.zencdn.net/7.7.5/video-js.css" rel="stylesheet" />
-  <script src="//vjs.zencdn.net/7.3.0/video.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163907066-1"></script>
   <script>
@@ -138,17 +137,12 @@
                 <div class="poca-music-content">
                   <!-- Music Player -->
                   <div class="poca-music-player">
-                      <video id="my-video" class="video-js vjs-live vjs-fluid" controls preload="auto" width="500" height="150" poster="./img/bg-img/LOCKDOWN.png" data-setup='{"liveui": true, "autoplay": true, "responsive": true}'>
-                        <source src="https://live.newsonc.com/hls/radio.m3u8" type="application/x-mpegURL">
-                        <p class="vjs-no-js">
-                            To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                        </p>
-                      </video>
+                    <video id="video" controls poster="./img/bg-img/LOCKDOWN.png"></video>
                   </div>
                   <!-- Likes, Share & Download -->
                   <div class="likes-share-download d-flex align-items-center justify-content-between">
+                    <a href="#"><i class="fa fa-heart" id="fbdata-reaction" aria-hidden="true"></i></a>
                     <div>
-                      <a href="#" class="mr-4"><i class="fa fa-thumbs-up" id="fbdata-reaction" aria-hidden="true"></i></a>
                       <a href="#" class="mr-4"><i class="fa fa-share-alt" id="fbdata-share" aria-hidden="true"></i></a>
                     </div>
                   </div>
@@ -285,6 +279,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="js/default-assets/active.js"></script>
   <!-- Facebook Data -->
   <script src="js/facebook.js"></script>
+      <script>
+        if (Hls.isSupported()) {
+          var video = document.getElementById('video');
+          var hls = new Hls({ liveMaxBackBufferLength: 60 });
+          hls.loadSource('https://live.newsonc.com/hls/radio.m3u8');
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+          });
+        }
+        else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = 'https://live.newsonc.com/hls/radio.m3u8';
+          video.addEventListener('canplay', function () {
+            video.play();
+          });
+        }
+      </script>
 </body>
 
 </html>

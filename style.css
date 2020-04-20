@@ -1613,4 +1613,8 @@ ul {
   background: rgba(150, 150, 150, 0.3);
   border-radius:20px;
 }
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
 /*# sourceMappingURL=style.css.map */
