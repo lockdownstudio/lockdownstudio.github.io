@@ -284,14 +284,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         if (Hls.isSupported()) {
           var video = document.getElementById('video');
           var hls = new Hls({ liveMaxBackBufferLength: 60 });
-          hls.loadSource('https://live.newsonc.com/hls/radio.m3u8');
+          hls.loadSource('https://live.newsonc.com/live/abcd1234.m3u8');
           hls.attachMedia(video);
           hls.on(Hls.Events.MANIFEST_PARSED, function () {
             video.play();
           });
         }
         else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = 'https://live.newsonc.com/hls/radio.m3u8';
+          video.src = 'https://live.newsonc.com/live/abcd1234.m3u8';
           video.addEventListener('canplay', function () {
             video.play();
           });
